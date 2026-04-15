@@ -5,7 +5,7 @@ from dawn.generator import DawnAssistant
 
 
 def main() -> None:
-    pdf_path = Path("../data/PEDIATRIE ALBERT ROYER-1-1.pdf")
+    pdf_path = Path("../data/pediatrie.pdf")
     question = "Quand faut-il referer un enfant atteint d'anemie ?"
 
     config = DawnConfig(pdf_path=pdf_path)
