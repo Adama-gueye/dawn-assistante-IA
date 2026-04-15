@@ -1,0 +1,10 @@
+transformers
+sentence-transformers
+faiss-cpu
+pypdf
+accelerate
+bitsandbytes
+torch
+streamlit
+openai
+anthropic

@@ -1,0 +1,16 @@
+# Fdb version 4
+["pdflatex"] 1774535562.49857 "c:/DSIA/M2DSIA/dawn-project/latex/main.tex" "main.pdf" "main" 1774535563.00372 2
+  "C:/Users/HP/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1774526394 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+  "C:/Users/HP/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1774523530 13332035 124fddbe73563aaf0ef92dc102896508 ""
+  "C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
+  "C:/Users/HP/AppData/Local/Programs/MiKTeX/tex/latex/base/article.cls" 1761900684 20144 b966087dda3b194755eb460d32e2ef75 ""
+  "C:/Users/HP/AppData/Local/Programs/MiKTeX/tex/latex/base/size10.clo" 1761900684 8448 686612a86f0e04f41ea577f5ec7e83d8 ""
+  "C:/Users/HP/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1761202581 30662 bfd6e864f4ffc5018b0e2b6260c3181c ""
+  "c:/DSIA/M2DSIA/dawn-project/latex/main.tex" 1774535502 187 141abca0dc46433fb23e4e0594c806f3 ""
+  "main.aux" 1774535562 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "main.tex" 1774535502 187 141abca0dc46433fb23e4e0594c806f3 ""
+  (generated)
+  "main.aux"
+  "main.log"
+  "main.pdf"
+  (rewritten before read)
