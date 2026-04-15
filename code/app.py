@@ -2,6 +2,8 @@ from pathlib import Path
 
 import streamlit as st
 
+BASE_DIR = Path(__file__).resolve().parent
+DEFAULT_PDF_PATH = BASE_DIR / "pediatrie.pdf"
 
 st.set_page_config(page_title="DAWN", page_icon="D", layout="wide")
 st.title("DAWN")
@@ -17,7 +19,7 @@ def load_assistant(pdf_path: str):
     return DawnAssistant(config)
 
 
-pdf_path = st.text_input("Chemin du document PDF", value="pediatrie.pdf")
+pdf_path = st.text_input("Chemin du document PDF", value=str(DEFAULT_PDF_PATH))
 question = st.text_area(
     "Question medicale",
     placeholder="Exemple : Quand faut-il referer un enfant atteint d'anemie ?",
