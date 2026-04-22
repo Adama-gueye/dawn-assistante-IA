@@ -5,8 +5,8 @@ from pathlib import Path
 
 from dawn.chunking import build_chunks
 from dawn.config import DawnConfig
-from dawn.pdf_loader import load_pdf_pages
-from dawn.prompts import build_medical_prompt, format_context
+from dawn.pdf_loader import load_knowledge_pages
+from dawn.prompts import build_prompt, format_context
 from dawn.retriever import DawnRetriever
 
 
@@ -14,10 +14,14 @@ class DawnAssistant:
     def __init__(self, config: DawnConfig) -> None:
         self.config = config
         self.retriever = DawnRetriever(config.embedding_model)
+        self.loaded_documents: list[dict] = []
+        self.skipped_documents: list[dict] = []
         self._build_knowledge_base()
 
     def _build_knowledge_base(self) -> None:
-        pages = load_pdf_pages(Path(self.config.pdf_path))
+        pages, loaded_documents, skipped_documents = load_knowledge_pages(Path(self.config.knowledge_path))
+        self.loaded_documents = loaded_documents
+        self.skipped_documents = skipped_documents
         chunks = build_chunks(
             pages,
             chunk_size=self.config.chunk_size,
@@ -25,16 +29,25 @@ class DawnAssistant:
         )
         self.retriever.fit(chunks)
 
-    def answer(self, question: str) -> dict:
+    def answer(self, question: str, mode: str | None = None) -> dict:
+        selected_mode = mode or self.config.default_mode
         retrieved_chunks = self.retriever.search(question, top_k=self.config.top_k)
         context = format_context(retrieved_chunks)
-        prompt = build_medical_prompt(question, context)
+        prompt = build_prompt(question, context, selected_mode)
         answer = self._generate_answer(prompt)
 
         return {
             "question": question,
+            "mode": selected_mode,
             "answer": answer,
-            "sources": [{"page": item["page"], "score": item["score"]} for item in retrieved_chunks],
+            "sources": [
+                {
+                    "page": item["page"],
+                    "score": item["score"],
+                    "source_name": item["source_name"],
+                }
+                for item in retrieved_chunks
+            ],
         }
 
     def _generate_answer(self, prompt: str) -> str:

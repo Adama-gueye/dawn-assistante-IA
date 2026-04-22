@@ -28,6 +28,8 @@ def build_chunks(pages: list[dict], chunk_size: int, chunk_overlap: int) -> list
                     "page": page["page"],
                     "chunk_id": chunk_id,
                     "text": chunk_text,
+                    "source_name": page["source_name"],
+                    "source_path": page["source_path"],
                 }
             )
 

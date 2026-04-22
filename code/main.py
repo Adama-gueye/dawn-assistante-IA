@@ -5,10 +5,10 @@ from dawn.generator import DawnAssistant
 
 
 def main() -> None:
-    pdf_path = Path(__file__).resolve().parent / "pediatrie.pdf"
+    knowledge_path = Path(__file__).resolve().parent / "data"
     question = "Quand faut-il referer un enfant atteint d'anemie ?"
 
-    config = DawnConfig(pdf_path=pdf_path)
+    config = DawnConfig(knowledge_path=knowledge_path)
     assistant = DawnAssistant(config)
 
     answer = assistant.answer(question)
@@ -17,7 +17,7 @@ def main() -> None:
     print(answer["answer"])
     print("\nSources")
     for source in answer["sources"]:
-        print(f"- page {source['page']} | score={source['score']:.3f}")
+        print(f"- {source['source_name']} | page {source['page']} | score={source['score']:.3f}")
 
 
 if __name__ == "__main__":
