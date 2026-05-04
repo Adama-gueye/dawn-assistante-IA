@@ -8,7 +8,7 @@ def main() -> None:
     knowledge_path = Path(__file__).resolve().parent / "data"
     question = "Quand faut-il referer un enfant atteint d'anemie ?"
 
-    config = DawnConfig(knowledge_path=knowledge_path)
+    config = DawnConfig.from_env(knowledge_path=knowledge_path)
     assistant = DawnAssistant(config)
 
     answer = assistant.answer(question)
