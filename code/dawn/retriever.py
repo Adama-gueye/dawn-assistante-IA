@@ -504,11 +504,11 @@ class DawnRetriever:
             f"{chunk['source_name']} {chunk['source_path']}"
         )
         bonus = 0.0
-        # Local markdown files that are clinical protocols/transcriptions
         if chunk.get("source_name", "").endswith(".md"):
+            if "fiche_dawn" in combined_text:
+                bonus += 1.6
             if any(marker in combined_text for marker in ("transcription", "protocole", "guide", "conduite")):
                 bonus += 0.8
-            # Also bonus if source is in a specialty folder (paludisme, etc.)
             if any(folder in combined_text for folder in ("paludisme", "anemie", "detresse")):
                 bonus += 0.4
         return bonus
@@ -549,6 +549,9 @@ class DawnRetriever:
         combined_text = self._normalize_text(
             f"{chunk['source_name']} {chunk['source_path']} {chunk['text']}"
         )
+        source_text = self._normalize_text(f"{chunk['source_name']} {chunk['source_path']}")
+        if "fiche_dawn" in source_text:
+            return False
         for focus_name in active_focuses:
             rule = FOCUS_RULES[focus_name]
             if any(marker in combined_text for marker in rule["negative_markers"]):

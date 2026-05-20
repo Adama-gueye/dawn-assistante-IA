@@ -343,6 +343,9 @@ Format de sortie obligatoire :
 Suspicion initiale :
 - ...
 
+Signes cliniques :
+- ...
+
 Evaluation immediate :
 - ...
 
@@ -407,6 +410,9 @@ Contexte :
 
 Format de sortie obligatoire :
 Symptomes saillants :
+- ...
+
+Signes cliniques :
 - ...
 
 Hypotheses cliniques (du plus frequent au plus rare) :
